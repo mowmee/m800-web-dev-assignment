@@ -15,3 +15,5 @@ export const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast';
  * https://openweathermap.org/api/geocoding-api
  */
 export const geoUrl = 'http://api.openweathermap.org/geo/1.0/direct';
+
+export const appid = process.env.REACT_APP_API_KEY;
