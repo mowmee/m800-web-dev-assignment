@@ -19,7 +19,7 @@ export const forecastUrl =
  */
 export const geoUrl =
   process.env.NODE_ENV === 'production'
-    ? 'http://api.openweathermap.org/geo/1.0/direct'
+    ? 'https://api.openweathermap.org/geo/1.0/direct'
     : 'https://run.mocky.io/v3/e4e8bcbb-df91-4c69-8def-b7e7682d0f01';
 
 export const appid =
