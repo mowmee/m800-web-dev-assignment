@@ -19,9 +19,21 @@ export default function WeatherForecast(props: Props) {
 
   return (
     <>
-      <BarChart labels={dateList} data={tempMinList} />
-      <BarChart labels={dateList} data={tempMaxList} />
-      <HumidityGraph labels={dateList} data={humidityList} />
+      <BarChart
+        title="Minimum temperature of the next four days"
+        labels={dateList}
+        data={tempMinList}
+      />
+      <BarChart
+        title="Maximum temperature of the next four days"
+        labels={dateList}
+        data={tempMaxList}
+      />
+      <HumidityGraph
+        title="Humidity percentage of the next four days"
+        labels={dateList}
+        data={humidityList}
+      />
     </>
   );
 }
