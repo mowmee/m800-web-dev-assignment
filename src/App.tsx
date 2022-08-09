@@ -1,13 +1,14 @@
 import { useMemo, useState } from 'react';
 import CountryInput from './components/CountryInput';
 import WeatherForecast from './components/WeatherForecast';
-import { useGeoData, useForecastData } from './hooks';
+import { useGeoData, useForecastData, useDebounce } from './hooks';
 import styled from 'styled-components';
 
 export default function App() {
   const [q, setQ] = useState('');
+  const debouncedQ = useDebounce(q);
 
-  const { data: geoData, isValidating: isGeoLoading } = useGeoData(q);
+  const { data: geoData, isValidating: isGeoLoading } = useGeoData(debouncedQ);
   const selectedGeo = geoData?.[0];
 
   const { data: forecastData, isValidating: isForecastLoading } =
@@ -19,12 +20,12 @@ export default function App() {
         return selectedGeo!.name;
       case isGeoLoading || isForecastLoading:
         return 'loading';
-      case !!q:
+      case !!debouncedQ:
         return 'No found';
       default:
         return '';
     }
-  }, [selectedGeo, isGeoLoading, isForecastLoading, q]);
+  }, [selectedGeo, isGeoLoading, isForecastLoading, debouncedQ]);
 
   return (
     <S.Container>
